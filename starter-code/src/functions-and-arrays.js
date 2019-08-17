@@ -1,4 +1,25 @@
-// Find the maximum
+// LAB | JS Functions & Arrays
+
+/**
+ *! TASK 1: Find the maximum
+ */
+
+// Find the maximum: Way 1
+// function maxOfTwoNumbers(a, b) {
+//   if (a >= b) {
+//     return a;
+//   } else if (b >= a) {
+//     return b;
+//   }
+// };
+
+// Find the maximum: Way 2
+let maxOfTwoNumbers = (a, b) => Math.max(a, b);
+
+/**
+ *! TASK 2: Find the longest word
+ */
+
 
 // Finding Longest Word
 var words = [
@@ -11,13 +32,76 @@ var words = [
   'crackpot'
 ];
 
+// Create a function
+function findLongestWord(words) {
+  // Initialize an empty variable for longest word
+  let longestWord = "";
+
+  // Return undefined if there is no item in array (words)
+  if (words.length === 0) return null;
+
+  // Loop through the words array and return the value of that index item
+  for (let i = 0; i < words.length; i++) {
+    // Compare returned value from the array in current iteration 
+    // If returned value of array (words[i]) in current iteration is longer than the value in the variable `longest`, 
+    if (longestWord.length < words[i].length) {
+      // assign the value of array (words[i]) to `longest` variable
+      longestWord = words[i];
+    }
+  }
+  // Return the longest variable from last iteration
+  return longestWord; // crocodile
+}
+
+findLongestWord(words);
+
+/**
+ *! TASK 3: Calculating a sum
+ */
+
+
 // Calculating a Sum
 
 var numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
-// Calculate the Average
+// Create a function called sumArray
+function sumArray(numbers) {
+  // Initialize a sum variable with value 0
+  let sum = 0;
+  // Loop through numbers array
+  for (let i = 0; i < numbers.length; i++) {
+    // Add returned value of numbers array (numbers[i]) to sum and reassign sum
+    sum += numbers[i];
+  }
+  return sum; // 87
+}
 
+sumArray(numbers);
+
+/**
+ *! TASK 4: Calculate the Average
+ */
+
+
+// Calculate the Average
 var numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
+
+// function averageNumbers(numAv) {
+//   if (numAv.length === 0) return undefined;
+//   return numAv.reduce((a, b) => a + b, 0) / numAv.length;
+// }
+
+function averageNumbers(numbersAvg) {
+  if (!numbersAvg.length) return null;
+
+  const sum = sumArray(numbersAvg); // Callback
+  const avg = sum / numbersAvg.length;
+
+  return avg; // 6
+
+}
+
+averageNumbers(numbersAvg);
 
 // Array of Strings
 var wordsArr = [
@@ -32,6 +116,27 @@ var wordsArr = [
   'fuel',
   'palace'
 ];
+
+/**
+ *! TASK 5: Return the average word length
+ */
+
+
+function averageWordLength(wordsArr) {
+  if (!wordsArr.length) return null;
+
+  let avgWordLen = 0;
+
+  // Loop through wordsArr
+  for (let i of wordsArr) {
+    // Increment avgWordLen by length of returned value of wordArr
+    avgWordLen += i.length;
+  }
+  // Divide value into wordsArr length
+  return avgWordLen / wordsArr.length;
+}
+
+averageWordLength(wordsArr);
 
 // Unique Arrays
 var wordsUnique = [
@@ -48,8 +153,43 @@ var wordsUnique = [
   'bring'
 ];
 
+/**
+ *! TASK 6: Find unique words in array
+ */
+
+function uniquifyArray(wordsUnique) {
+  if (!wordsUnique.length) return [];
+
+  let uniques = [];
+
+  for (let i of wordsUnique) {
+    // If index of uniques array returns not found (-1) 
+    // then push current value (i) into uniques array
+    if (uniques.indexOf(i) === -1) uniques.push(i);
+  }
+  return uniques;
+}
+
+uniquifyArray(wordsUnique);
+
+// Result:
+// ['crab',
+//   'poison',
+//   'contagious',
+//   'simple',
+//   'bring',
+//   'sharp',
+//   'playground',
+//   'communion'
+// ]
+
+/**
+ *! TASK 7: Find if word exists
+ */
+
+
 // Finding Elements
-var wordsFind = [
+var words = [
   'machine',
   'subset',
   'trouble',
@@ -59,6 +199,24 @@ var wordsFind = [
   'truth',
   'disobedience'
 ];
+
+function doesWordExist(words, searchTerm) {
+  if (!words.length) return false;
+
+  for (let i of words) {
+    if (!words.includes(searchTerm)) return false;
+    else return true;
+  }
+
+  return words;
+}
+
+doesWordExist(words, 'lala'); // false
+
+/**
+ *! TASK 8: Find and count repetitive items in array
+ */
+
 
 // Counting Repetion
 var wordsCount = [
@@ -74,6 +232,26 @@ var wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(arr, searchTerm) {
+  if (!arr.length) return 0;
+
+  let count = 0;
+
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] === searchTerm) {
+      count++;
+    }
+  }
+  return count;
+}
+
+howManyTimes(wordsCount, 'matter'); // 4
+
+/**
+ *! TASK 9: Find equal or specific values in nested arrays
+ */
+
 // Bonus Quest
 
 var matrix = [
@@ -98,3 +276,20 @@ var matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+function greatestProduct(matrix) {
+
+  // Loop through first array level
+  for (let a = 0; a < matrix.length; a++) {
+    console.log(`Matrix A: ${matrix[a]}`);
+    // Loop through second array level
+    for (let b = 0; b < matrix[a].length; b++) {
+      console.log(`Matrix B: ${matrix[a][b]}`);
+      // TODO: NOT DONE YET
+      if (a === b) return 1;
+      else if (a === 2 && b === 2) return 16;
+    }
+  }
+}
+
+console.log(greatestProduct(matrix));
